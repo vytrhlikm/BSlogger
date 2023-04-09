@@ -1,4 +1,4 @@
-#include "BSlogger.hpp"
+#include <BSlogger/BSlogger.hpp>
 
 #include <chrono> //milliseconds
 #include <thread> //sleep_for
