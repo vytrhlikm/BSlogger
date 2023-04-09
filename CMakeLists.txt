@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 # set the project name
 SET(BS_LOGGER_LIB_NAME BSlogger)
+SET(BS_LOGGER_LIB_EXAMPLE BSlogger-example)
 
 project(${BS_LOGGER_LIB_NAME} VERSION 0.1.0 LANGUAGES CXX)
 
@@ -18,7 +19,7 @@ add_library(${BS_LOGGER_LIB_NAME}
         src/bslogger_examples.cpp
         )
 
-add_executable(bslogger-examples src/bslogger_examples.cpp)
+add_executable(${BS_LOGGER_LIB_EXAMPLE} src/bslogger_examples.cpp)
 
 target_include_directories(${BS_LOGGER_LIB_NAME}
         PRIVATE
@@ -29,6 +30,10 @@ target_include_directories(${BS_LOGGER_LIB_NAME}
         $<BUILD_INTERFACE:${${BS_LOGGER_LIB_NAME}_SOURCE_DIR}/include>
         )
 
+target_link_libraries(${BS_LOGGER_LIB_EXAMPLE}
+        PRIVATE
+        ${BS_LOGGER_LIB_NAME}
+        )
 target_link_libraries(${BS_LOGGER_LIB_NAME}
         PRIVATE
         )
